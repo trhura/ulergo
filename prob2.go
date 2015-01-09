@@ -11,8 +11,7 @@ func main() {
 	for fib2 < upperBound {
 		// add even fibonacci numbers
 		if fib2 % 2 == 0 { sum += fib2 }
-		fib1, fib2 = fib2, fib1
-		fib2 = fib1 + fib2
+		fib1, fib2 = fib2, fib1 + fib2
 	}
 
 	fmt.Println(sum)
