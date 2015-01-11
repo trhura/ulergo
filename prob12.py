@@ -1,12 +1,13 @@
 
 import itertools
 import operator
+import functools
 
 def main():
     i = 0
     while True:
         factors = get_all_factors(nth_triangle_number(i))
-        print i, nth_triangle_number(i), len(factors)
+        #print i, nth_triangle_number(i), len(factors)
         if len(factors) > 500:
             break
         i += 1
@@ -21,7 +22,7 @@ def get_all_factors (num):
 
     for i in range (2, len(prime_factors)):
         combinations = itertools.combinations(prime_factors, i)
-        ifactors = [reduce(operator.mul, fs) for fs in combinations]
+        ifactors = [functools.reduce(operator.mul, fs) for fs in combinations]
         factors.update(ifactors)
 
     return factors
@@ -59,4 +60,5 @@ def next_prime(n):
         n += 1
         if is_prime(n): return n
 
-main()
+if __name__ == "__main":
+    main()
