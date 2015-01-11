@@ -7,7 +7,6 @@ func main () {
 	totalSundays := 0
 	for i := 1901; i <= 2000; i++ {
 		totalSundays += countSundaysInFirstOfMonth(i, startingDay)
-		fmt.Println(i, startingDay, countSundaysInFirstOfMonth(i, startingDay))
 		startingDay = findStartingWeekdayforNextYear(i, startingDay)
 	}
 
