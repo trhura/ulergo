@@ -3,9 +3,6 @@
 (defn alphabetical-value [name]
   (apply + (map #(-> % int (- 64)) name)))
 
-(defn get-score [name position]
-  (* (alphabetical-value name) position))
-
 (defn read-names-from-file [filename]
   (map #(subs % 1 (dec (count %))) (string/split (slurp filename) #",")))
 

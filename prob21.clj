@@ -1,15 +1,11 @@
-(defn proper-divisors [num]
-  nil)
+(defn get-proper-divisors [num]
+  (for [x (range 1 (inc (/ num 2))) :when (zero? (rem num x))] x))
 
-(defn divisible [num div]
-  (zero? (rem num div)))
+(defn spd [num]
+  ;; sum of proper divisors
+  (apply + (get-proper-divisors num)))
 
-(defn is-prime? [num]
-  (cond (<= num 1) false
-        (== num 2) true
-        :else (not-any? #(divisible num %) (range 2 (inc (Math/sqrt num))))))
-
-(defn next-prime [num]
-  (if (is-prime? (inc num))
-    num
-    (next-prime (inc num))))
+(defn prob21 []
+  (apply + (for [x (range 2 10000) :when (let [spdx (spd x)]
+                                           (and (= (spd spdx) x) (not (= x spdx))))]
+             x)))
