@@ -6,7 +6,7 @@
           v (apply vector frcts)]
       (cond (not (even? len)) (recur (next v))
             (> (- (count fractions) (count frcts)) 10) false ;; needed to stop looking after 10th char
-            (< len 5) false ;; 5 is important
+            (< len 8) false ;; check at least more than 4 char are repeated
             (= (subvec v 0 (/ len 2)) (subvec v (/ len 2))) true
             :else (recur (next v))))))
 
