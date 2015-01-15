@@ -27,7 +27,6 @@
         false
         (recur (inc left) (dec right))))))
 
-
 (defn prob4 []
   (apply max (for [x (range 100 999)
                    y (range 100 999)
