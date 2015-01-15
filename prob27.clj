@@ -6,6 +6,7 @@
                 (cond (> (* n n) num) true
                       (zero? (rem num n)) false
                       :else (recur (+ 2 n))))))
+
 (defn quadratics-is-prime [n a b]
   (is-prime? (+ (* n n) (* a n) b)))
 

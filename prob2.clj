@@ -14,9 +14,9 @@
     (lazy-fib 1 2)))
 
 (defn prob2 []
-  (loop [fib-seq (filter even? (fib))
+  (loop [even-fib-seq (filter even? (fib))
          sum 0]
-    (let [fib-num (first fib-seq)]
+    (let [fib-num (first even-fib-seq)]
       (if (> fib-num 4000000)
         sum
-        (recur (next fib-seq) (+ sum fib-num))))))
+        (recur (next even-fib-seq) (+ sum fib-num))))))
