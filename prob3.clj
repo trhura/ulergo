@@ -11,7 +11,7 @@
                       (zero? (rem num n)) false
                       :else (recur (+ 2 n))))))
 
-(defn primes []
+(defn prime-sequence []
   ;; generate lazy seq of primes
   (let [next-primes (fn lazy-primes [num]
                       ;; return lazy prime primes starting from num
@@ -24,13 +24,13 @@
 (defn prime-factors [number]
   ;; prime-factors by trial divison
   (loop [num number
-         prime-seq (primes)
+         prime-seq (prime-sequence)
          factors nil]
 
     (let [prime-num (first prime-seq)]
       (cond (> (* prime-num prime-num) num) (cons num factors)
             (zero? (rem num prime-num)) (recur (/ num prime-num )
-                                               (primes)
+                                               (prime-sequence)
                                                (cons prime-num factors))
             :else (recur num (next prime-seq) factors)))))
 

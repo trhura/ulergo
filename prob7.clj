@@ -13,7 +13,7 @@
                       (zero? (rem num n)) false
                       :else (recur (+ 2 n))))))
 
-(defn primes []
+(defn prime-sequence []
   ;; generate lazy seq of primes
   (let [next-primes (fn lazy-primes [num]
                       ;; return lazy prime primes starting from num
@@ -23,4 +23,4 @@
     (next-primes 2)))
 
 (defn prob7 []
-  (nth (primes) (dec 10001)))
+  (nth (prime-sequence) (dec 10001)))
