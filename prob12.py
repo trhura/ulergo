@@ -5,12 +5,15 @@ import functools
 
 def main():
     i = 0
+    trinum  = 0
     while True:
-        factors = get_all_factors(nth_triangle_number(i))
+        trinum = nth_triangle_number(i)
+        factors = get_all_factors(trinum)
         #print i, nth_triangle_number(i), len(factors)
         if len(factors) > 500:
             break
         i += 1
+    print(trinum)
 
 def nth_triangle_number(n):
     return sum(range(n+1))
@@ -60,5 +63,5 @@ def next_prime(n):
         n += 1
         if is_prime(n): return n
 
-if __name__ == "__main":
+if __name__ == "__main__":
     main()
