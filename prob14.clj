@@ -26,12 +26,25 @@
 
 (def count-collaz-sequence
   (fn [number]
-    (loop [num number
-           cnt 0]
-      (if (= num 1)
-        (inc cnt)
-          (recur (next-number num) (inc cnt))))))
+    (cond
+     ;; http://www.ericr.nl/wondrous/techpage.html
+     ;; http://math.stackexchange.com/questions/60573/reducing-the-time-to-calculate-collatz-sequences
+     (even? number) 0
+     (zero? (rem (- number 2) 3)) 0
+     (zero? (rem (- number 5) 8)) 0
+     (zero? (rem (- number 2) 9)) 0
+     (zero? (rem (- number 4) 9)) 0
+     (zero? (rem (- number 5) 9)) 0
+     (zero? (rem (- number 8) 9)) 0
+
+     :else (loop [num number
+                  cnt 0]
+             (if (= num 1) (inc cnt)
+                 (recur (next-number num) (inc cnt)))))))
+
+(require '[clojure.core.reducers :as r])
 
 (defn prob14 []
-  (apply max-key second (for [i (range (/ limit 2) limit)]
-                          [i (count-collaz-sequence i)])))
+  (apply max-key second
+         (map (fn [i] [i (count-collaz-sequence i)])
+               (range (/ limit 2) limit))))
